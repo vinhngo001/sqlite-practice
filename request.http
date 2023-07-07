@@ -33,7 +33,7 @@ Content-Type: application/json
 }
 
 ###D
-DELETE  {{serverUrl}}/employee/3
+DELETE  {{serverUrl}}/employee/2
 Content-Type: application/json
 ###
 GET {{serverUrl}}/department
