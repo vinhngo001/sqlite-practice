@@ -54,12 +54,12 @@ Content-Type: application/json
 
 {
     "departmentId": 2, 
-    "employeeId": 4
+    "employeeId": 2
 }
 
 ###
 GET {{serverUrl}}/dep-emp
 ###
 
-DELETE {{serverUrl}}/dep-emp/5
+DELETE {{serverUrl}}/dep-emp/6
 ###

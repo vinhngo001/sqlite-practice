@@ -22,18 +22,20 @@ router.post("/", async (req, res) => {
 
             if (!row) {
                 return res.status(400).json({ error: "Không tìm thấy dữ liệu phòng ban" });
+            } else {
+                db.run(`INSERT INTO Department_Employee (departmentId, employeeId) VALUES (?, ?)`, [departmentId, employeeId], function (err) {
+                    if (err) {
+                        return res.status(500).json({ error: err.message });
+                    } else {
+                        res.json({ success: "Thêm nhân viên vào phong ban thành công", id: this.lastID });
+                    }
+                });
             }
-            db.run(`INSERT INTO Department_Employee (departmentId, employeeId) VALUES (?, ?)`, [departmentId, employeeId], function (err) {
-                if (err) {
-                    return res.status(500).json({ error: err.message });
-                } else {
-                    res.json({ success: "Thêm nhân viên vào phong ban thành công", id: this.lastID });
-                }
-            });
+
         });
     });
 });
-router.get("/", (req,res)=>{
+router.get("/", (req, res) => {
     let sql = `SELECT * FROM Department_Employee`;
     db.all(sql, function (err, rows) {
         if (err) {
