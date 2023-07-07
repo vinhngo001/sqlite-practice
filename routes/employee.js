@@ -95,13 +95,19 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
     let sql = `DELETE FROM Employee WHERE id = ?`;
     const { id } = req.params;
-    db.run(sql, [id], function (err) {
-        if (err) {
-            return res.status(400).json({ error: err.message });
-        }
+    db.get(`SELECT * FROM Department_Employee  WHERE  employeeId= ?`, [id], function (err, row) {
+        if (row) {
+            return res.status(400).json({ error: "Nhân viên đang làm việc ở 1 phòng ban" });
+        } else {
+            db.run(sql, [id], function (err) {
+                if (err) {
+                    return res.status(400).json({ error: err.message });
+                }
 
-        res.json({ success: "Xóa dữ liệu thành công" });
-    });
+                res.json({ success: "Xóa dữ liệu thành công" });
+            });
+        }
+    })
 });
 
 module.exports = router;
