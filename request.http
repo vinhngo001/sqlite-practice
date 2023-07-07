@@ -46,6 +46,15 @@ Content-Type: application/json
     "name": "Human resources", 
     "code": "02-Dep"
 }
+###
+
+PUT {{serverUrl}}/department/3
+Content-Type: application/json
+
+{
+    "name": "Marketing", 
+    "code": "03-Dep"
+}
 
 ###
 
