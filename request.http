@@ -1,0 +1,65 @@
+@serverUrl = http://localhost:3000/api
+###
+
+POST {{serverUrl}}/employee
+Content-Type: application/json
+
+{
+    "name": "User2", 
+    "phone": "0995094072", 
+    "email":"user2@yahoo.com", 
+    "sex": 0, 
+    "avatar":"https://res.cloudinary.com/v-webdev/image/upload/v1658635301/v-media/profile-user_vglyvp.png"
+}
+
+###
+
+GET {{serverUrl}}/employee
+
+###
+
+GET {{serverUrl}}/employee/3
+###
+
+PUT {{serverUrl}}/employee/1
+Content-Type: application/json
+
+{
+    "name": "User1", 
+    "phone": "0995094072", 
+    "email":"user1@yahoo.com", 
+    "sex": 1, 
+    "avatar":"https://res.cloudinary.com/v-webdev/image/upload/v1658635301/v-media/profile-user_vglyvp.png"
+}
+
+###D
+DELETE  {{serverUrl}}/employee/3
+Content-Type: application/json
+###
+GET {{serverUrl}}/department
+###
+
+POST {{serverUrl}}/department
+Content-Type: application/json
+
+{
+    "name": "Human resources", 
+    "code": "02-Dep"
+}
+
+###
+
+POST {{serverUrl}}/dep-emp
+Content-Type: application/json
+
+{
+    "departmentId": 2, 
+    "employeeId": 4
+}
+
+###
+GET {{serverUrl}}/dep-emp
+###
+
+DELETE {{serverUrl}}/dep-emp/5
+###
