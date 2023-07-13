@@ -5,9 +5,9 @@ POST {{serverUrl}}/employee
 Content-Type: application/json
 
 {
-    "name": "User2", 
+    "name": "User3", 
     "phone": "0995094072", 
-    "email":"user2@yahoo.com", 
+    "email":"user3@yahoo.com", 
     "sex": 0, 
     "avatar":"https://res.cloudinary.com/v-webdev/image/upload/v1658635301/v-media/profile-user_vglyvp.png"
 }
@@ -18,22 +18,22 @@ GET {{serverUrl}}/employee
 
 ###
 
-GET {{serverUrl}}/employee/3
+GET {{serverUrl}}/employee/7
 ###
 
-PUT {{serverUrl}}/employee/1
+PUT {{serverUrl}}/employee/7
 Content-Type: application/json
 
 {
-    "name": "User1", 
+    "name": "User7", 
     "phone": "0995094072", 
-    "email":"user1@yahoo.com", 
-    "sex": 1, 
+    "email":"user7@yahoo.com", 
+    "sex": "1", 
     "avatar":"https://res.cloudinary.com/v-webdev/image/upload/v1658635301/v-media/profile-user_vglyvp.png"
 }
 
 ###D
-DELETE  {{serverUrl}}/employee/2
+DELETE  {{serverUrl}}/employee/7
 Content-Type: application/json
 ###
 GET {{serverUrl}}/department
@@ -43,17 +43,17 @@ POST {{serverUrl}}/department
 Content-Type: application/json
 
 {
-    "name": "Human resources", 
-    "code": "02-Dep"
+    "name": "Accounting department", 
+    "code": "04-Dep"
 }
 ###
 
-PUT {{serverUrl}}/department/3
+PUT {{serverUrl}}/department/4
 Content-Type: application/json
 
 {
-    "name": "Marketing", 
-    "code": "03-Dep"
+    "name": "Audit department", 
+    "code": "04-Dep"
 }
 
 ###
@@ -62,13 +62,13 @@ POST {{serverUrl}}/dep-emp
 Content-Type: application/json
 
 {
-    "departmentId": 2, 
-    "employeeId": 2
+    "departmentId": 4, 
+    "employeeId": 6
 }
 
 ###
 GET {{serverUrl}}/dep-emp
 ###
 
-DELETE {{serverUrl}}/dep-emp/6
+DELETE {{serverUrl}}/dep-emp/8
 ###

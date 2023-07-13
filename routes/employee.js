@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { db } = require("../db");
 
-router.post("/", async (req, res) => {
+router.post("/", (req, res) => {
     try {
         const { code, name, phone, email, sex, avatar } = req.body;
         if (!code) {
@@ -45,7 +45,7 @@ router.post("/", async (req, res) => {
     }
 });
 
-router.get("/", async (req, res) => {
+router.get("/", (req, res) => {
     db.all('SELECT * FROM Employee', (err, rows) => {
         if (err) {
             res.status(500).json({ error: err.message });
@@ -55,7 +55,7 @@ router.get("/", async (req, res) => {
     });
 });
 
-router.get("/:id", async (req, res) => {
+router.get("/:id", (req, res) => {
     let sql = `SELECT * FROM Employee  WHERE id  = ?`;
     const { id } = req.params;
     db.get(sql, [id], function (err, row) {
@@ -71,25 +71,25 @@ router.get("/:id", async (req, res) => {
     });
 });
 
-router.put("/:id", async (req, res) => {
-    const { name, phone, email, sex, avatar } = req.body;
+router.put("/:id", (req, res) => {
     const { id } = req.params;
+    const { name, phone, email, sex, avatar } = req.body;
     let sql = `UPDATE Employee SET name=?, phone=?, email=?, sex=?, avatar=?  WHERE id=?`;
-    // const inputData = [name, phone, email, sex, avatar, id];
+    
     let inputData = [];
     if (name) inputData.push(name);
     if (phone) inputData.push(phone);
     if (email) inputData.push(email);
-    if (sex) inputData.push(sex);
+    if (sex) inputData.push(Number(sex));
     if (avatar) inputData.push(avatar);
 
-    db.run(sql, [...inputData, id], function (err) {
+    db.run(sql, [...inputData, Number(id)], function (err) {
         if (err) {
             return res.status(400).json({ error: err.message });
         }
 
         res.json({ success: "Cập nhật dữ liệu thành công" });
-    })
+    });
 });
 
 router.delete("/:id", async (req, res) => {
